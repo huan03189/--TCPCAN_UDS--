@@ -1,0 +1,1215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>client</class>
+ <widget class="QWidget" name="client">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1145</width>
+    <height>815</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>545</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>TCP-CAN_UDS</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="QIcon::ThemeIcon::UserAvailable"/>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    font-family: &quot;Microsoft YaHei&quot;, &quot;Segoe UI&quot;, sans-serif;
+    color: #ECF0F1;
+    /* 主窗口背景色：深蓝灰 */
+    background-color: #22252F;
+}</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>2</width>
+     <height>2</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout"/>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>631</width>
+     <height>741</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QWidget" name="mainContainer" native="true">
+      <property name="styleSheet">
+       <string notr="true">QWidget#mainContainer {
+/* mainContainer 的样式表 */
+background-color: #2C3E50; /* 你原来的深色 */
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+
+/* 顶部不要圆角，让它直直地顶上去，盖住 TitleWidget 的边框接缝 */
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+}</string>
+      </property>
+      <widget class="QWidget" name="Titlewidget" native="true">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>631</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QWidget#Titlewidget {
+  background-color: #34495E; /* 你可以换成比下面稍微深一点或浅一点的颜色 */
+/* 关键在这里：只设置底部边框 */
+border-bottom: 2px solid #3B5323; /* 颜色可以自定义，比如亮一点的线条 */
+
+
+}</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="0" column="3">
+         <widget class="QPushButton" name="btnClose">
+          <property name="minimumSize">
+           <size>
+            <width>26</width>
+            <height>26</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton#btnClose, QPushButton#btnMax, QPushButton#btnMin {
+    background-color: transparent; /* 透明背景 */
+    border: none;                  /* 无边框 */
+    color: #FFFFFF;                /* 白色文字或图标 */
+    font-size: 14px;
+    min-width: 26px;
+    min-height: 26px;
+}
+
+/* 鼠标悬停效果 */
+QPushButton#btnClose:hover {
+    background-color: #E81123; /* 微软风格的红色关闭 */
+    color: white;
+}
+
+QPushButton#btnMax:hover, QPushButton#btnMin:hover {
+    background-color: #444444; /* 悬停变灰 */
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset theme="QIcon::ThemeIcon::WindowClose"/>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>16</width>
+            <height>16</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    background-color: transparent;
+    color: #ECF0F1; /* 稍微带点灰的白，不刺眼 */
+    font-size: 16px;
+    font-weight: bold;
+    
+}</string>
+          </property>
+          <property name="text">
+           <string>TCP/CAN_UDS</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="btnMin">
+          <property name="minimumSize">
+           <size>
+            <width>34</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton#btnClose, QPushButton#btnMax, QPushButton#btnMin {
+    background-color: transparent; /* 透明背景 */
+    border: none;                  /* 无边框 */
+    color: #FFFFFF;                /* 白色文字或图标 */
+    font-size: 15px;
+    min-width: 34px;
+    min-height: 34px;
+}
+
+/* 鼠标悬停效果 */
+QPushButton#btnClose:hover {
+    background-color: #E81123; /* 微软风格的红色关闭 */
+    color: white;
+}
+
+QPushButton#btnMax:hover, QPushButton#btnMin:hover {
+    background-color: #444444; /* 悬停变灰 */
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset theme="QIcon::ThemeIcon::ListRemove"/>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TCPwidget" native="true">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>50</y>
+         <width>281</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+    /* 1. 背景色：比主窗口背景（#2C3E50）稍亮一点，比如 #34495E */
+    background-color: #34495E;
+
+    /* 2. 圆角：让边角圆润，现代感强 */
+    border-radius: 10px;
+
+    /* 3. 边框：加一条细边框，增加精致感 */
+    border: 1px solid #465a71;
+
+    /* 4. 可选：加点内边距，防止内容贴边 */
+    /* padding: 10px; */
+}</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="TCPgroupBox">
+          <property name="styleSheet">
+           <string notr="true">/* 内部卡片容器 (你的 GroupBox) */
+QGroupBox {
+    background-color: #34495E; /* 卡片背景色 */
+    border: 1px solid #3B536B; /* 卡片边框 */
+    border-radius: 6px; /* 圆角 */
+    margin-top: 10px; /* 给标题留出空间 */
+    padding: 15px; /* 内边距 */
+    font-size: 13px;
+    color: #ECF0F1; /* GroupBox 标题文字颜色 */
+}
+
+/* GroupBox 的标题 */
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 5px;
+    color: #1ABC9C; /* 标题文字高亮色 */
+    font-weight: bold;
+}
+
+/* 内部的功能按钮 (你图片里的 PushButton) */
+QPushButton {
+    background-color: #1ABC9C; /* 主色调按钮 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    min-width: 80px;
+}
+
+QPushButton:hover {
+    background-color: #16A085; /* 悬停时颜色变深 */
+}
+
+QPushButton:pressed {
+    background-color: #119078; /* 按下时颜色更深 */
+}</string>
+          </property>
+          <property name="title">
+           <string>远程连接</string>
+          </property>
+          <widget class="QLabel" name="label_TcpStatus">
+           <property name="geometry">
+            <rect>
+             <x>140</x>
+             <y>20</y>
+             <width>106</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    background-color: #2C3E50;    /* 深蓝灰背景，比主窗口稍亮，体现层级 */
+    color: #7F8C8D;               /* 默认文字颜色：暗灰色（表示无状态/未知） */
+    border: 1px solid #34495E;    /* 边框：深灰色，融入背景 */
+    border-radius: 6px;           /* 圆角：让标签更柔和 */
+    padding: 4px 12px;            /* 内边距：让标签更饱满 */
+    font-weight: bold;            /* 加粗 */
+    font-size: 12px;              /* 字号适中 */
+    min-width: 80px;              /* 最小宽度，保证视觉统一 */
+    text-align: center;           /* 文字居中 */
+}
+/* TCP 就绪 - 绿色 */
+QLabel#label_TcpStatus[tcpState=&quot;ready&quot;] {
+    color: #ECF0F1;               /* 文字变白，更清晰 */
+    background-color: #00E676;    /* 鲜艳的绿色背景 */
+    border-color: #00E676;        /* 边框同色 */
+}
+
+/* TCP 重连 - 黄色 */
+QLabel#label_TcpStatus[tcpState=&quot;reconnecting&quot;] {
+    color: #2C3E50;               /* 文字变深，保证在黄底上可读 */
+    background-color: #FFC107;    /* 琥珀色背景 */
+    border-color: #FFC107;
+}
+
+/* TCP 断开 - 红色 */
+QLabel#label_TcpStatus[tcpState=&quot;disconnected&quot;] {
+    color: #ECF0F1;               /* 文字变白 */
+    background-color: #FF5C5C;    /* 鲜艳的红色背景 */
+    border-color: #FF5C5C;
+}</string>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;未连接&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="lineEdit_Ip">
+           <property name="geometry">
+            <rect>
+             <x>11</x>
+             <y>51</y>
+             <width>129</width>
+             <height>32</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    background-color: #2C3E50; /* 比背景稍亮的深蓝灰 */
+    border: 1px solid #34495E; /* 深灰色边框 */
+    border-radius: 4px;
+    color: white;
+    padding: 4px;
+    font-size: 14px;
+}
+
+/* 输入框被选中（正在输入）时 */
+QLineEdit:focus {
+    border: 1px solid #3498DB; /* 蓝色高亮边框 */
+    background-color: #34495E;
+}</string>
+           </property>
+           <property name="text">
+            <string>IP</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="lineEdit_Port">
+           <property name="geometry">
+            <rect>
+             <x>11</x>
+             <y>90</y>
+             <width>129</width>
+             <height>32</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    background-color: #2C3E50; /* 比背景稍亮的深蓝灰 */
+    border: 1px solid #34495E; /* 深灰色边框 */
+    border-radius: 4px;
+    color: white;
+    padding: 4px;
+    font-size: 14px;
+}
+
+/* 输入框被选中（正在输入）时 */
+QLineEdit:focus {
+    border: 1px solid #3498DB; /* 蓝色高亮边框 */
+    background-color: #34495E;
+}</string>
+           </property>
+           <property name="text">
+            <string>Port</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_DisconnectTcp">
+           <property name="geometry">
+            <rect>
+             <x>128</x>
+             <y>147</y>
+             <width>104</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3498DB; /* 科技蓝 */
+    color: white;
+    border: none; /* 去掉边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 6px 12px; /* 内边距，让按钮胖一点 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 鼠标悬停时 */
+QPushButton:hover {
+    background-color: #5DADE2; /* 变亮一点 */
+}
+
+/* 鼠标按下时 */
+QPushButton:pressed {
+    background-color: #2980B9; /* 变暗一点 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>断开服务器</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_ConnectTcp">
+           <property name="geometry">
+            <rect>
+             <x>17</x>
+             <y>147</y>
+             <width>104</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3498DB; /* 科技蓝 */
+    color: white;
+    border: none; /* 去掉边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 6px 12px; /* 内边距，让按钮胖一点 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 鼠标悬停时 */
+QPushButton:hover {
+    background-color: #5DADE2; /* 变亮一点 */
+}
+
+/* 鼠标按下时 */
+QPushButton:pressed {
+    background-color: #2980B9; /* 变暗一点 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>连接服务器</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="CANWidget" native="true">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>50</y>
+         <width>301</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+    /* 1. 背景色：比主窗口背景（#2C3E50）稍亮一点，比如 #34495E */
+    background-color: #34495E;
+
+    /* 2. 圆角：让边角圆润，现代感强 */
+    border-radius: 10px;
+
+    /* 3. 边框：加一条细边框，增加精致感 */
+    border: 1px solid #465a71;
+
+    /* 4. 可选：加点内边距，防止内容贴边 */
+    /* padding: 10px; */
+}
+</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="CANgroupBox">
+          <property name="styleSheet">
+           <string notr="true">/* 内部卡片容器 (你的 GroupBox) */
+QGroupBox {
+    background-color: #34495E; /* 卡片背景色 */
+    border: 1px solid #3B536B; /* 卡片边框 */
+    border-radius: 6px; /* 圆角 */
+    margin-top: 10px; /* 给标题留出空间 */
+    padding: 15px; /* 内边距 */
+    font-size: 13px;
+    color: #ECF0F1; /* GroupBox 标题文字颜色 */
+}
+
+/* GroupBox 的标题 */
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 5px;
+    color: #1ABC9C; /* 标题文字高亮色 */
+    font-weight: bold;
+}
+
+/* 内部的功能按钮 (你图片里的 PushButton) */
+QPushButton {
+    background-color: #1ABC9C; /* 主色调按钮 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    min-width: 80px;
+}
+
+QPushButton:hover {
+    background-color: #16A085; /* 悬停时颜色变深 */
+}
+
+QPushButton:pressed {
+    background-color: #119078; /* 按下时颜色更深 */
+}</string>
+          </property>
+          <property name="title">
+           <string>本地诊断</string>
+          </property>
+          <widget class="QLabel" name="label_CanStatus">
+           <property name="geometry">
+            <rect>
+             <x>150</x>
+             <y>20</y>
+             <width>106</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel#label_TcpStatus, QLabel#label_CanStatus {
+    background-color: #2C3E50;    /* 深蓝灰背景，比主窗口稍亮，体现层级 */
+    color: #7F8C8D;               /* 默认文字颜色：暗灰色（表示无状态/未知） */
+    border: 1px solid #34495E;    /* 边框：深灰色，融入背景 */
+    border-radius: 6px;           /* 圆角：让标签更柔和 */
+    padding: 4px 12px;            /* 内边距：让标签更饱满 */
+    font-weight: bold;            /* 加粗 */
+    font-size: 12px;              /* 字号适中 */
+    min-width: 80px;              /* 最小宽度，保证视觉统一 */
+    text-align: center;           /* 文字居中 */
+}
+/* CAN 初始化 - 蓝色 (新增建议) */
+QLabel#label_CanStatus[canState=&quot;initializing&quot;] {
+    color: #ECF0F1;
+    background-color: #3498DB;    /* 科技蓝 */
+    border-color: #3498DB;
+}
+
+/* CAN 就绪 - 绿色 */
+QLabel#label_CanStatus[canState=&quot;ready&quot;] {
+    color: #ECF0F1;
+    background-color: #00E676;
+    border-color: #00E676;
+}
+
+/* CAN 失败 - 红色 */
+QLabel#label_CanStatus[canState=&quot;failed&quot;] {
+    color: #ECF0F1;
+    background-color: #FF5C5C;
+    border-color: #FF5C5C;
+}</string>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;待机&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_ConnectCan">
+           <property name="geometry">
+            <rect>
+             <x>17</x>
+             <y>147</y>
+             <width>104</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3498DB; /* 科技蓝 */
+    color: white;
+    border: none; /* 去掉边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 6px 12px; /* 内边距，让按钮胖一点 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 鼠标悬停时 */
+QPushButton:hover {
+    background-color: #5DADE2; /* 变亮一点 */
+}
+
+/* 鼠标按下时 */
+QPushButton:pressed {
+    background-color: #2980B9; /* 变暗一点 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>初始化CAN</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="stress_btn">
+           <property name="geometry">
+            <rect>
+             <x>128</x>
+             <y>147</y>
+             <width>104</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3498DB; /* 科技蓝 */
+    color: white;
+    border: none; /* 去掉边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 6px 12px; /* 内边距，让按钮胖一点 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 鼠标悬停时 */
+QPushButton:hover {
+    background-color: #5DADE2; /* 变亮一点 */
+}
+
+/* 鼠标按下时 */
+QPushButton:pressed {
+    background-color: #2980B9; /* 变暗一点 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>压力测试</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="UDSwidget" native="true">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>270</y>
+         <width>591</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+    /* 1. 背景色：比主窗口背景（#2C3E50）稍亮一点，比如 #34495E */
+    background-color: #34495E;
+
+    /* 2. 圆角：让边角圆润，现代感强 */
+    border-radius: 10px;
+
+    /* 3. 边框：加一条细边框，增加精致感 */
+    border: 1px solid #465a71;
+
+    /* 4. 可选：加点内边距，防止内容贴边 */
+    /* padding: 10px; */
+}</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="UDSgroupBox">
+          <property name="styleSheet">
+           <string notr="true">/* 内部卡片容器 (你的 GroupBox) */
+QGroupBox {
+    background-color: #34495E; /* 卡片背景色 */
+    border: none;             /* 去掉边框 */
+    background-color: transparent; /* 背景透明，防止遮挡底色 */
+    border-radius: 6px; /* 圆角 */
+    margin-top: 10px; /* 给标题留出空间 */
+    padding: 15px; /* 内边距 */
+    font-size: 13px;
+    color: #ECF0F1; /* GroupBox 标题文字颜色 */
+}
+
+/* GroupBox 的标题 */
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 5px;
+    color: #1ABC9C; /* 标题文字高亮色 */
+    font-weight: bold;
+}
+
+/* 内部的功能按钮 (你图片里的 PushButton) */
+QPushButton {
+    background-color: #1ABC9C; /* 主色调按钮 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    min-width: 80px;
+}
+
+QPushButton:hover {
+    background-color: #16A085; /* 悬停时颜色变深 */
+}
+
+QPushButton:pressed {
+    background-color: #119078; /* 按下时颜色更深 */
+}</string>
+          </property>
+          <property name="title">
+           <string>UDS快捷读取</string>
+          </property>
+          <widget class="QComboBox" name="comboBox_Channel">
+           <property name="geometry">
+            <rect>
+             <x>430</x>
+             <y>140</y>
+             <width>104</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">/* --- CAN 下拉框整体样式 --- */
+QComboBox {  /* 建议给控件起个名字，比如 comboBox_Channel，这样只影响这一个 */
+    background-color: #2980B9; /* 深蓝色背景，和上面的按钮颜色接近 */
+    border: 1px solid #2980B9; /* 边框颜色 */
+    border-radius: 5px;        /* 圆角，和按钮保持一致 */
+    color: white;              /* 文字颜色 */
+    padding: 5px;              /* 内边距，让文字不贴边 */
+    min-height: 18px;          /* 最小高度，和上面的按钮高度一致 */
+}
+
+/* --- 下拉箭头部分的样式 --- */
+QComboBoxl::down-arrow {
+    image: url(:/icons/arrow_down_white.png); /* 可选：自定义白色箭头图标 */
+    width: 12px;
+    height: 12px;
+}
+
+/* --- 下拉菜单弹出时的样式 --- */
+QComboBox QAbstractItemView {
+    background-color: #2C3E50; /* 下拉菜单的背景色 */
+    border: 1px solid #2980B9; /* 下拉菜单的边框 */
+    color: white;              /* 下拉菜单文字颜色 */
+    selection-background-color: #3498DB; /* 选中项的背景色 */
+}</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>CAN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TCP</string>
+            </property>
+           </item>
+          </widget>
+          <widget class="QPushButton" name="code_btn">
+           <property name="geometry">
+            <rect>
+             <x>430</x>
+             <y>64</y>
+             <width>104</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3498DB; /* 科技蓝 */
+    color: white;
+    border: none; /* 去掉边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 6px 12px; /* 内边距，让按钮胖一点 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 鼠标悬停时 */
+QPushButton:hover {
+    background-color: #5DADE2; /* 变亮一点 */
+}
+
+/* 鼠标按下时 */
+QPushButton:pressed {
+    background-color: #2980B9; /* 变暗一点 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>编程会话</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="Default">
+           <property name="geometry">
+            <rect>
+             <x>430</x>
+             <y>26</y>
+             <width>104</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3498DB; /* 科技蓝 */
+    color: white;
+    border: none; /* 去掉边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 6px 12px; /* 内边距，让按钮胖一点 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 鼠标悬停时 */
+QPushButton:hover {
+    background-color: #5DADE2; /* 变亮一点 */
+}
+
+/* 鼠标按下时 */
+QPushButton:pressed {
+    background-color: #2980B9; /* 变暗一点 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>默认会话</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="ex_btn">
+           <property name="geometry">
+            <rect>
+             <x>430</x>
+             <y>102</y>
+             <width>104</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3498DB; /* 科技蓝 */
+    color: white;
+    border: none; /* 去掉边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 6px 12px; /* 内边距，让按钮胖一点 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 鼠标悬停时 */
+QPushButton:hover {
+    background-color: #5DADE2; /* 变亮一点 */
+}
+
+/* 鼠标按下时 */
+QPushButton:pressed {
+    background-color: #2980B9; /* 变暗一点 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>拓展会话</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_ReadTemp">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>90</y>
+             <width>104</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3498DB; /* 科技蓝 */
+    color: white;
+    border: none; /* 去掉边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 6px 12px; /* 内边距，让按钮胖一点 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 鼠标悬停时 */
+QPushButton:hover {
+    background-color: #5DADE2; /* 变亮一点 */
+}
+
+/* 鼠标按下时 */
+QPushButton:pressed {
+    background-color: #2980B9; /* 变暗一点 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>cpu温度</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_ResTemp">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>62</y>
+             <width>101</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    background-color: transparent;
+	border: none;
+    color: #ECF0F1; /* 稍微带点灰的白，不刺眼 */
+    font-size: 16px;
+    font-weight: bold;
+    
+}</string>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_Load">
+           <property name="geometry">
+            <rect>
+             <x>158</x>
+             <y>62</y>
+             <width>111</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    background-color: transparent;
+    color: #ECF0F1; /* 稍微带点灰的白，不刺眼 */
+border: none;
+    font-size: 16px;
+    font-weight: bold;
+    
+}</string>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_load">
+           <property name="geometry">
+            <rect>
+             <x>160</x>
+             <y>90</y>
+             <width>104</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3498DB; /* 科技蓝 */
+    color: white;
+    border: none; /* 去掉边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 6px 12px; /* 内边距，让按钮胖一点 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 鼠标悬停时 */
+QPushButton:hover {
+    background-color: #5DADE2; /* 变亮一点 */
+}
+
+/* 鼠标按下时 */
+QPushButton:pressed {
+    background-color: #2980B9; /* 变暗一点 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>cpu负载</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_Usage">
+           <property name="geometry">
+            <rect>
+             <x>286</x>
+             <y>62</y>
+             <width>111</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    background-color: transparent;
+    color: #ECF0F1; /* 稍微带点灰的白，不刺眼 */
+	border: none;
+    font-size: 16px;
+    font-weight: bold;
+    
+}</string>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_usage">
+           <property name="geometry">
+            <rect>
+             <x>290</x>
+             <y>90</y>
+             <width>104</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3498DB; /* 科技蓝 */
+    color: white;
+    border: none; /* 去掉边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 6px 12px; /* 内边距，让按钮胖一点 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 鼠标悬停时 */
+QPushButton:hover {
+    background-color: #5DADE2; /* 变亮一点 */
+}
+
+/* 鼠标按下时 */
+QPushButton:pressed {
+    background-color: #2980B9; /* 变暗一点 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>内存使用率</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_ECU">
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>150</y>
+             <width>104</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3498DB; /* 科技蓝 */
+    color: white;
+    border: none; /* 去掉边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 6px 12px; /* 内边距，让按钮胖一点 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 鼠标悬停时 */
+QPushButton:hover {
+    background-color: #5DADE2; /* 变亮一点 */
+}
+
+/* 鼠标按下时 */
+QPushButton:pressed {
+    background-color: #2980B9; /* 变暗一点 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>ECU复位</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btn_Tester">
+           <property name="geometry">
+            <rect>
+             <x>240</x>
+             <y>150</y>
+             <width>104</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3498DB; /* 科技蓝 */
+    color: white;
+    border: none; /* 去掉边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 6px 12px; /* 内边距，让按钮胖一点 */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 鼠标悬停时 */
+QPushButton:hover {
+    background-color: #5DADE2; /* 变亮一点 */
+}
+
+/* 鼠标按下时 */
+QPushButton:pressed {
+    background-color: #2980B9; /* 变暗一点 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>测试者存在</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="Textwidget" native="true">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>500</y>
+         <width>591</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+    /* 1. 背景色：比主窗口背景（#2C3E50）稍亮一点，比如 #34495E */
+    background-color: #34495E;
+
+    /* 2. 圆角：让边角圆润，现代感强 */
+    border-radius: 10px;
+
+    /* 3. 边框：加一条细边框，增加精致感 */
+    border: 1px solid #465a71;
+
+    /* 4. 可选：加点内边距，防止内容贴边 */
+    /* padding: 10px; */
+}</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QPlainTextEdit" name="plainTextEdit_Log">
+          <property name="minimumSize">
+           <size>
+            <width>521</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>521</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit, QTextEdit, QPlainTextEdit {
+   background-color: #2C3E50; /* 和背景同色 */
+    border: 1px solid #465a71; /* 加一个亮一点的边框 */
+    border-radius: 4px;
+    color: #FFFFFF; /* 文字白色 */
+    padding: 5px;
+}
+
+
+/* QTextEdit 的只读模式（如果你想让它看起来像显示屏） */
+QTextEdit[readOnly=&quot;true&quot;] {
+    background-color: #1A252F; /* 更深的背景 */
+    color: #2ECC71;            /* 绿色文字，像老式显示器 */
+    border: 1px solid #2C3E50;
+    font-family: &quot;Consolas&quot;, &quot;Courier New&quot;, monospace; /* 等宽字体，更极客 */
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

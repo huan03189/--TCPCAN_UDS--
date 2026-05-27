@@ -1,0 +1,22 @@
+[Unit]
+Description=TCP/CAN UDS Diagnostic Server for Phytium Pi
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+Environment="CAN_IFACE=can0"
+Environment="TCP_PORT=8888"
+ExecStartPre=/usr/local/bin/setup_can_irq.sh ${CAN_IFACE} 1
+ExecStart=/usr/local/bin/tcpcan-server -c ${CAN_IFACE} -p ${TCP_PORT} ${LOG_ARGS}
+Restart=on-failure
+RestartSec=5
+
+# 安全限制
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
