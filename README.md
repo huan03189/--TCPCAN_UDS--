@@ -65,11 +65,34 @@ qmake && make -j$(nproc)
 sudo cp new_TcpCan_server /usr/local/bin/tcpcan-server
 ```
 
+# ── 切换日志模式（每次只选一个，文件会被覆盖）──
+
+# 压测模式（仅记错误，CAN 1/100 采样，跳过 TesterPresent）
+sudo tee /etc/systemd/system/tcpcan-server.service.d/log.conf << 'EOF'
+[Service]
+Environment="LOG_ARGS=--stress-mode"
+EOF
+
+# 正常模式（INFO 级别，等同不传参）
+sudo tee /etc/systemd/system/tcpcan-server.service.d/log.conf << 'EOF'
+[Service]
+Environment="LOG_ARGS="
+EOF
+
+# 调试模式（DEBUG 级别）
+sudo tee /etc/systemd/system/tcpcan-server.service.d/log.conf << 'EOF'
+[Service]
+Environment="LOG_ARGS=--verbose"
+EOF
+
+# 每次改完重载生效
+sudo systemctl daemon-reload
+sudo systemctl restart tcpcan-server
 ## 运行
 
 ```bash
 # 服务端（飞腾派）
-./tcpcan-server -c can2 -p 8888
+./tcpcan-server -c can0 -p 8888
 
 # 客户端（Windows）
 new_TcpCan_client.exe
