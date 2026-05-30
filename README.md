@@ -69,7 +69,7 @@ sudo cp new_TcpCan_server /usr/local/bin/tcpcan-server
 
 ```bash
 # 服务端（飞腾派）
-./tcpcan-server -c can2 -p 8888
+./tcpcan-server -c can0 -p 8888
 
 # 客户端（Windows）
 new_TcpCan_client.exe
